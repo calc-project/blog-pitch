@@ -1,10 +1,8 @@
 import numpy as np
 from scipy.interpolate import make_interp_spline
 
-folder = 'data' # the name of the folder your data files are in
-
 from pathlib import Path
-filelist = [f for f in Path().glob("./" + folder) if p.exists()]
+filelist = [f for f in Path().glob("./data/*")]
 
 for filename in filelist:
     with open("./" + folder + "/" + filename) as f:
