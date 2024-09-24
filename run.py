@@ -1,14 +1,16 @@
 import numpy as np
 from scipy.interpolate import make_interp_spline
 
-import os
-folder = 'data'
-from os.path import isfile, join
-filelist = [f for f in os.listdir("./" + folder) if isfile(join("./" + folder, f))]
+folder = 'data' # the name of the folder your data files are in
+
+from pathlib import Path
+filelist = [f for f in Path().glob("./" + folder) if p.exists()]
+
 for filename in filelist:
     with open("./" + folder + "/" + filename) as f:
         if "--undefined--" in f.read():
             print(filename)
+            
 import pandas
 import math
 import matplotlib.pyplot as plt
