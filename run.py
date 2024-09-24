@@ -1,23 +1,15 @@
 import numpy as np
 from scipy.interpolate import make_interp_spline
-
-from pathlib import Path
-filelist = [f for f in Path().glob("./data/*")]
-
-for filename in filelist:
-    with open("./" + folder + "/" + filename) as f:
-        if "--undefined--" in f.read():
-            print(filename)
-            
 import pandas
 import math
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-yscale = "ZScore"
+filelist = list(Path("./data/").glob("*"))
 
 all_data = pandas.DataFrame()
 for filename in filelist:
-    data = pandas.read_csv(folder + "/" + filename, sep="   ", engine="python")
+    data = pandas.read_csv(filename, sep="   ", engine="python")
     data["Semitones"] = 12 * data["F0_Hz"].apply(
         lambda x: math.log(x / data["F0_Hz"].mean(), 2)
     )
@@ -26,7 +18,7 @@ for filename in filelist:
 plt.figure(figsize=(10, 6))
 
 for filename in filelist:
-    data = pandas.read_csv("./" + folder + "/" + filename, sep="   ", engine="python")
+    data = pandas.read_csv(filename, sep="   ", engine="python")
     data["Semitones"] = 12 * data["F0_Hz"].apply(
         lambda x: math.log(x / all_data["F0_Hz"].mean(), 2)
     )
@@ -34,12 +26,12 @@ for filename in filelist:
     data["ZScore"] = (data["Semitones"] - all_data["Semitones"].mean()) / all_data["Semitones"].std()
     data["Time"] = data["Time_s"] - data["Time_s"].min()
 
+    yscale = "ZScore" # set as the column name you will use for the y-axis
     x = np.linspace(data["Time"].min(), data["Time"].max(), 300)
     spl = make_interp_spline(data["Time"], data[yscale], k=2)
     y = spl(x)
 
     plt.plot(x, y, label=filename)
-
 
 plt.title("log z-Score contours")
 plt.xlabel("Time (s)")
