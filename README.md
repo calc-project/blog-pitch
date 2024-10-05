@@ -7,6 +7,4 @@ This repository provides access to sample data and code discussed in the study �
 
 If you use the data and code shown here in your work, please cite the original study:
 
-```
-van Dam, Kellen Parker, “Preparing Acoustic Pitch Data for Computational Analysis and Presentation”, in Computer-Assisted Language Comparison in Practice, 7.1: 25-35 [First published on 07/10/2024], URL: https://calc.hypotheses.org/7390. DOI: 10.15475/calcip.2024.2.4.
-```
+> van Dam, Kellen Parker, “Preparing Acoustic Pitch Data for Computational Analysis and Presentation”, in Computer-Assisted Language Comparison in Practice, 7.1: 25-35 [First published on 07/10/2024], URL: https://calc.hypotheses.org/7390. DOI: 10.15475/calcip.2024.2.4.
