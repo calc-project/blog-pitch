@@ -52,5 +52,10 @@ plt.xlabel("Time (s)")
 plt.ylabel("log z-Score")
 plt.legend(loc="lower right", fontsize='small')
 plt.grid(True)
-# save it as a png
-plt.savefig("./plot.png", dpi=300)
+
+# save the plot as a pdf so it's immediately usable in Overleaf at high resolution
+plt.savefig("./plot.pdf")
+
+# alternatively save as svg or png
+# plt.savefig("./plot.svg")
+# plt.savefig("./plot.png", dpi=300)
